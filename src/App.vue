@@ -1,30 +1,31 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+	<div>
+		<nav-page></nav-page>
+		<router-link to="/"></router-link>
+		<router-link to="/form"></router-link>
+		<router-link to="/about"></router-link>
+		<router-link to="/employees"></router-link>
+		<router-view />
+	</div>
 </template>
 
+<script>
+import NavPage from '@/components/NavPage.vue'
+
+export default {
+	components: {
+		NavPage
+	}
+}
+
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+#app {}
 </style>
