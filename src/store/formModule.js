@@ -1,12 +1,12 @@
 export const formModule = {
     state: () => ({
-        isHideForm1: false,
-        isHideForm2: false,
-        isHidePartForm1: false,
-        isHideTel: false,
-        isHidePass: false,
-        isHideSMS: false,
-        randomNum: 0,
+        isHideForm1: false, // скрытие/показ формы 1
+        isHideForm2: true, // скрытие/показ формы 2
+        isHidePartForm1: false, // скрытие/показ первого инпута формы 1
+        isHideTel: false, // показ предупреждения об отправке кода в смс
+        isHidePass: false, // скрытие/показ инпута для ввода пароля из смс
+        isHideSMS: false, // скрытие/показ пароля из смс
+        randomNum: 0, // код в смс
         inpValuePass: '',
         searchQuery: '',
     }), 

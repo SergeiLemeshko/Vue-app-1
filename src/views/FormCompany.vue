@@ -23,21 +23,42 @@
 	<!--форма 2 -->
 	<form class="form-profile" isHide="false" action="" method="GET" v-show="isHideForm2">
 		<p class="form-profile__request">Пожалуйста, заполните анкету:</p>
-			<input class="form-profile__name" type="text" placeholder="Введите имя">
-			<input class="form-profile__surname" type="text" placeholder="Введите фамилию"> 
+			<input-form  
+				type="text" 
+				placeholder="Введите имя"
+			/>
+			<input-form 
+				type="text" 
+				placeholder="Введите фамилию"
+			/> 
 		<p class="form-profile__gender">Выберите ваш пол</p>
-			<input class="form-profile__masculine" id="masculine" type="radio" name="question">
+			<input 
+				class="form-profile__masculine" 
+				id="masculine" 
+				type="radio" 
+				value="Муж."
+				v-model="picked">
 			<label for="masculine">Муж.</label>
-			<input class="form-profile__female" id="female" type="radio" name="question">
+			<input 
+				class="form-profile__female" 
+				id="female" 
+				type="radio" 
+				value="Жен."
+				v-model="picked">
 			<label for="female">Жен.</label>
 		<p class="form-profile__birthday">Дата рождения</p>
 			<input type="date" />
-			<input class="form-profile__email" type="email" placeholder="Введите e-mail">
+			<input-form 
+				class="form-profile__email" 
+				type="email" 
+				placeholder="Введите e-mail"
+			/>
 		<p class="form-profile__accord">Я согласен с условиями программы лояльности и обработки данных.</p>
-			<input type="checkbox">
-		<div class="form-profile__btns">
-			<button class="form-profile__btns-apple" type="submit"><span>Добавить в Apple Wallet</span></button>
-			<button class="form-profile__btns-google" type="submit"><span>Добавить в Google Pay</span></button>
+			<input type="checkbox" id="checkbox" v-model="checked" />
+			<label for="checkbox">{{ checked }}</label>
+		<div class="form-profile__btns">   
+			<button-form><span>Добавить в Apple Wallet</span></button-form>
+			<button-form><span>Добавить в Google Pay</span></button-form>
 		</div>
 	</form>
 </template>
@@ -45,11 +66,14 @@
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 import InputForm from '@/components/UI/InputForm.vue';
+import ButtonForm from '@/components/UI/ButtonForm.vue';
+
 
 export default {
 	name: "FormCompany",
 	components: {
 		InputForm,
+		ButtonForm,
 	},
 	props: {
 	},
