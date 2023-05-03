@@ -1,22 +1,19 @@
 export const formModule = {
     state: () => ({
         isHideForm1: false, // скрытие/показ формы 1
-        isHideForm2: true, // скрытие/показ формы 2
+        isHideForm2: false, // скрытие/показ формы 2
         isHidePartForm1: false, // скрытие/показ первого инпута формы 1
         isHideTel: false, // показ предупреждения об отправке кода в смс
         isHidePass: false, // скрытие/показ инпута для ввода пароля из смс
         isHideSMS: false, // скрытие/показ пароля из смс
-        randomNum: 0, // код в смс
+        isHideBtns: false, // скрытие/показ кнопок 2 формы
+        randomNum: '', // рандомный код в смс
         inpValuePass: '',
         searchQuery: '',
     }), 
     getters: {
-        changeFormTel(state, minValue, maxValue) {
-            let telInpValue = state.searchQuery;
-            let arrTelInpValue = telInpValue.split('');    
-                minValue = arrTelInpValue[2] + arrTelInpValue[3];
-                maxValue = arrTelInpValue[1] + arrTelInpValue[4];
-                state.randomNum = minValue + maxValue; // Добавить рандом
+        changeFormTel(state) {
+                state.randomNum = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
                 state.isHidePartForm1 = true;
                 state.isHideTel = true;
             setTimeout(() => {
@@ -27,6 +24,14 @@ export const formModule = {
                 }
         }, 2000);
     },
+    matchNumbers(state) {
+        if(state.randomNum === Number(state.searchQuery)) {
+            state.isHideForm1 = true;
+            setTimeout(() => {
+                state.isHideForm2 = true;
+            }, 1000)
+        }
+    }
 },
     mutations: {
         setHideForm1(state, bool) {
@@ -55,6 +60,9 @@ export const formModule = {
         },
         setSearchQuery(state, searchQuery) {
             state.searchQuery = searchQuery
+        },
+        setHideBtns(state, bool) {
+            state.isHideBtns = bool
         },
     },
         actions: {

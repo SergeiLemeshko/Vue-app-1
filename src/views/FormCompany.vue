@@ -13,19 +13,20 @@
 		<p class="form-tel__confirm" v-if="isHideTel">“Смс с кодом подтверждения отправлено”</p>
 			<input-form  
 				v:model-value="searchQuery"
-				@update:model-value="setSearchQuery" 
+				@update:model-value="setSearchQuery"  
 				v-if="isHidePass" 
+				@match="matchNumbers"
 				type="password" 
 				placeholder="Введите код из смс"
 			/>
-		<p class="form-tel__sms" v-if="isHideSMS">А вот и ваш пароль из SMS: {{ this.randomNum }}</p>		
+		<p class="form-tel__sms" v-if="isHideSMS">А вот и ваш пароль из SMS:{{ this.randomNum }}</p>		
 	</form>
 	<!--форма 2 -->
 	<form class="form-profile" isHide="false" action="" method="GET" v-show="isHideForm2">
 		<p class="form-profile__request">Пожалуйста, заполните анкету:</p>
 			<input-form  
 				type="text" 
-				placeholder="Введите имя"
+				placeholder="Введите имя" 
 			/>
 			<input-form 
 				type="text" 
@@ -56,7 +57,7 @@
 		<p class="form-profile__accord">Я согласен с условиями программы лояльности и обработки данных.</p>
 			<input type="checkbox" id="checkbox" v-model="checked" />
 			<label for="checkbox">{{ checked }}</label>
-		<div class="form-profile__btns">   
+		<div class="form-profile__btns" v-show="isHideBtns">   
 			<button-form><span>Добавить в Apple Wallet</span></button-form>
 			<button-form><span>Добавить в Google Pay</span></button-form>
 		</div>
@@ -92,6 +93,7 @@ export default {
 			setRandomNum: 'forms/setRandomNum',
 			setInpValuePass: 'forms/setInpValuePass',
 			setSearchQuery: 'forms/setSearchQuery',
+			setHideBtns: 'forms/setHideBtns',
 		}),
 		...mapActions({
 			
@@ -108,9 +110,11 @@ export default {
 			randomNum: state => state.forms.randomNum,
 			inpValuePass: state => state.forms.inpValuePass,
 			searchQuery: state => state.forms.searchQuery,
+			isHideBtns: state => state.forms.isHideBtns,
 		}),
 		...mapGetters({
 			changeFormTel: 'forms/changeFormTel',
+			matchNumbers: 'forms/matchNumbers',
 		})
 	}
 }
