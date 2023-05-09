@@ -24,13 +24,20 @@
 	<!--форма 2 -->
 	<form class="form-profile" isHide="false" action="" method="GET" v-show="isHideForm2">
 		<p class="form-profile__request">Пожалуйста, заполните анкету:</p>
-			<input-form  
+			<input-form 
+				v:model-value="formValidation"
+				@update:model-value="setFormValidation"
+				:class="{ 'active__inp': isActiveInp }"
 				type="text" 
 				placeholder="Введите имя" 
 			/>
-			<input-form 
+			<input-form
+				v:model-value="formValidation"
+				@update:model-value="setFormValidation"
+				:class="{ 'active__inp': isActiveInp }"
 				type="text" 
 				placeholder="Введите фамилию"
+
 			/> 
 		<p class="form-profile__gender">Выберите ваш пол</p>
 			<input 
@@ -48,8 +55,15 @@
 				v-model="picked">
 			<label for="female">Жен.</label>
 		<p class="form-profile__birthday">Дата рождения</p>
-			<input type="date" />
+		<p class="form-profile__birthday-warn" v-show="warnBirthday">Неверный год рождения</p>
+		<p class="form-profile__birthday-warn1" v-show="warnBirthdayMore">Вам ещё не исполнилось 18 лет</p>
 			<input-form 
+				type="date" 
+				v:model-value="formValidationDate"
+				@update:model-value="setFormValidationDate"
+				:class="{ 'active__inp': isActiveInp }"
+			/>
+			<input 
 				class="form-profile__email" 
 				type="email" 
 				placeholder="Введите e-mail"
@@ -57,9 +71,10 @@
 		<p class="form-profile__accord">Я согласен с условиями программы лояльности и обработки данных.</p>
 			<input type="checkbox" id="checkbox" v-model="checked" />
 			<label for="checkbox">{{ checked }}</label>
+			<button class="form-profile__ok" @click.prevent="validForm"><span>ОК</span></button>
 		<div class="form-profile__btns" v-show="isHideBtns">   
-			<button-form><span>Добавить в Apple Wallet</span></button-form>
-			<button-form><span>Добавить в Google Pay</span></button-form>
+			<button class="form-profile__apple"><span>Добавить в Apple Wallet</span></button>
+			<button class="form-profile__google"><span>Добавить в Google Pay</span></button>
 		</div>
 	</form>
 </template>
@@ -68,8 +83,6 @@
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 import InputForm from '@/components/UI/InputForm.vue';
 import ButtonForm from '@/components/UI/ButtonForm.vue';
-
-
 export default {
 	name: "FormCompany",
 	components: {
@@ -94,6 +107,12 @@ export default {
 			setInpValuePass: 'forms/setInpValuePass',
 			setSearchQuery: 'forms/setSearchQuery',
 			setHideBtns: 'forms/setHideBtns',
+			setFormValidation: 'forms/setFormValidation',
+			setActiveName: 'forms/setActiveNam',
+			setFormValidationDate: 'forms/setFormValidationDate',
+			setWarnBirthday: 'forms/setWarnBirthday',
+			setWarnBirthdayMore: 'forms/setWarnBirthdayMore',
+
 		}),
 		...mapActions({
 			
@@ -111,14 +130,19 @@ export default {
 			inpValuePass: state => state.forms.inpValuePass,
 			searchQuery: state => state.forms.searchQuery,
 			isHideBtns: state => state.forms.isHideBtns,
+			formValidation: state => state.forms.formValidation,
+			isActiveInp: state => state.forms.isActiveInp,
+			formValidationDate: state => state.forms.formValidationDate,
+			warnBirthday: state => state.forms.warnBirthday,
+			warnBirthdayMore: state => state.forms.warnBirthdayMore,
 		}),
 		...mapGetters({
 			changeFormTel: 'forms/changeFormTel',
 			matchNumbers: 'forms/matchNumbers',
+			validForm: 'forms/validForm',
 		})
 	}
 }
-
 </script>
 
 <style scoped lang="scss">
@@ -128,53 +152,42 @@ export default {
 	width: 300px;
 	height: 120px;
 }
-
 .form-tel__input {
 	display: block;
-
 }
-
 .form-tel__btn {}
-
 .form-tel__confirm {}
-
 .form-tel__password {}
-
 .form-tel__sms{}
-
 /*вторая форма*/
 .form-profile {
 	background-color: rgb(228, 172, 225);
 	width: 300px;
 	height: 200px;
 }
-
 .form-profile__request {}
-
 .form-profile__name {
 	display: block;
 }
-
 .form-profile__surname {}
-
 .form-profile__gender {}
-
 .form-profile__masculine {}
-
 .form-profile__female {}
-
 .form-profile__birthday {}
 
+.form-profile__birthday-warn {}
+
+.form-profile__birthday-warn1 {}
 .form-profile__email {
 	display: block;
-
 }
-
 .form-profile__accord {}
+.form-profile__ok {}
+.form-profile__apple {}
+.form-profile__google {}
 
-.form-profile__btns {}
-
-.form-profile__btns-apple {}
-
-.form-profile__btns-google {}
+.active__inp {
+	background-color: rgb(12, 209, 150); 
+    color: rgb(0, 250, 75);
+}
 </style>

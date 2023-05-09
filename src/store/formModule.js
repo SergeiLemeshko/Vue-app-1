@@ -7,9 +7,14 @@ export const formModule = {
         isHidePass: false, // скрытие/показ инпута для ввода пароля из смс
         isHideSMS: false, // скрытие/показ пароля из смс
         isHideBtns: false, // скрытие/показ кнопок 2 формы
+        isActiveInp: false, // скрытие/показ подсветки на инпут имени
+        warnBirthday: false, // показываю предупреждение нет 18 лет
+        warnBirthdayMore: false, // показываю предупреждение неверного года ДР
         randomNum: '', // рандомный код в смс
         inpValuePass: '',
         searchQuery: '',
+        formValidation: '',
+        formValidationDate: '',
     }), 
     getters: {
         changeFormTel(state) {
@@ -31,7 +36,34 @@ export const formModule = {
                 state.isHideForm2 = true;
             }, 1000)
         }
+    },
+    validForm: function (state) {
+        try {
+            let date = new Date();
+            let formDate = []; // Введенная ДР
+            formDate = state.formValidationDate.split('-'); // Год введенной ДР
+    
+            if(state.formValidation <= 0) {
+                state.isActiveInp = true;
+            } 
+            if(Number(formDate[0]) >= date.getFullYear() - 18) {
+                state.warnBirthdayMore = true;
+                state.warnBirthday = false;
+                state.isActiveInp = true;
+            }
+            if(Number(formDate[0]) >= date.getFullYear()) {
+                state.warnBirthdayMore = false;
+                state.warnBirthday = true;
+                state.isActiveInp = true;
+            } 
+        }
+        catch {
+
+        }
     }
+            // let email = state.formValidation;
+        // let re = /^([A-Z][a-z\-\']{1,50})|([А-ЯЁIЇҐЄ][а-яёіїґє\-\']{1,50})$/;
+        // return re.test(email);
 },
     mutations: {
         setHideForm1(state, bool) {
@@ -63,6 +95,21 @@ export const formModule = {
         },
         setHideBtns(state, bool) {
             state.isHideBtns = bool
+        },
+        setFormValidation(state, formValidation) {
+            state.formValidation = formValidation
+        },
+        setActiveName(state, bool) {
+            state.isActiveInp = bool
+        },
+        setFormValidationDate(state, formValidationDate) {
+            state.formValidationDate = formValidationDate
+        },
+        setWarnBirthday(state, bool) {
+            state.warnBirthday = bool
+        },
+        setWarnBirthdayMore(state, bool) {
+            state.warnBirthdayMore = bool
         },
     },
         actions: {

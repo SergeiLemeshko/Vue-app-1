@@ -3,6 +3,8 @@
         class="form-tel__input" 
         :value="modelValue"
         @input="updateInput"
+        @inputName="updateInputName"
+        @inputDate="updateInputDate"
         type="tel" 
         placeholder="Введите номер телефона"
     />
@@ -16,6 +18,12 @@ export default {
 	},
     methods: {
         updateInput(event) {
+            this.$emit('update:modelValue', event.target.value)
+        },
+        updateInputName(event) {
+            this.$emit('update:modelValue', event.target.value)
+        },
+        updateInputDate(event) {
             this.$emit('update:modelValue', event.target.value)
         }
     }
