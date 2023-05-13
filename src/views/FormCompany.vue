@@ -25,19 +25,18 @@
 	<form class="form-profile" isHide="false" action="" method="GET" v-show="isHideForm2">
 		<p class="form-profile__request">Пожалуйста, заполните анкету:</p>
 			<input-form 
-				v:model-value="formValidation"
-				@update:model-value="setFormValidation"
-				:class="{ 'active__inp': isActiveInp }"
+				v:model-value="formValidationName"
+				@update:model-value="setFormValidationName"
+				:class="{ 'active__inp': isActiveName }"
 				type="text" 
 				placeholder="Введите имя" 
 			/>
 			<input-form
-				v:model-value="formValidation"
-				@update:model-value="setFormValidation"
-				:class="{ 'active__inp': isActiveInp }"
+				v:model-value="formValidationSurn"
+				@update:model-value="setFormValidationSurn"
+				:class="{ 'active__inp': isActiveSurn }"
 				type="text" 
 				placeholder="Введите фамилию"
-
 			/> 
 		<p class="form-profile__gender">Выберите ваш пол</p>
 			<input 
@@ -55,16 +54,18 @@
 				v-model="picked">
 			<label for="female">Жен.</label>
 		<p class="form-profile__birthday">Дата рождения</p>
-		<p class="form-profile__birthday-warn" v-show="warnBirthday">Неверный год рождения</p>
+		<p class="form-profile__birthday-warn" v-show="warnBirthday">Введите дату рождения</p>
 		<p class="form-profile__birthday-warn1" v-show="warnBirthdayMore">Вам ещё не исполнилось 18 лет</p>
 			<input-form 
 				type="date" 
 				v:model-value="formValidationDate"
 				@update:model-value="setFormValidationDate"
-				:class="{ 'active__inp': isActiveInp }"
+				:class="{ 'active__inp': isActiveDate }"
 			/>
-			<input 
-				class="form-profile__email" 
+			<input-form
+				v:model-value="formValidationEmail"
+				@update:model-value="setFormValidationEmail"
+				:class="{ 'active__inp': isActiveEmail }"
 				type="email" 
 				placeholder="Введите e-mail"
 			/>
@@ -107,15 +108,20 @@ export default {
 			setInpValuePass: 'forms/setInpValuePass',
 			setSearchQuery: 'forms/setSearchQuery',
 			setHideBtns: 'forms/setHideBtns',
-			setFormValidation: 'forms/setFormValidation',
-			setActiveName: 'forms/setActiveNam',
+			setFormValidationName: 'forms/setFormValidationName',
+			setFormValidationSurn: 'forms/setFormValidationSurn',
+			setActiveName: 'forms/setActiveName',
+			setActiveSurn: 'forms/setActiveSurn',
+			setActiveDate: 'forms/setActiveDate',
+			setActiveEmail: 'forms/setActiveEmail',
 			setFormValidationDate: 'forms/setFormValidationDate',
 			setWarnBirthday: 'forms/setWarnBirthday',
 			setWarnBirthdayMore: 'forms/setWarnBirthdayMore',
-
+			setFormValidationEmail: 'forms/setFormValidationEmail',
+			setFormArray: 'forms/setFormArray',
 		}),
 		...mapActions({
-			
+			validForm: 'forms/validForm',			
 		}),
 	},
 	computed: {
@@ -130,16 +136,21 @@ export default {
 			inpValuePass: state => state.forms.inpValuePass,
 			searchQuery: state => state.forms.searchQuery,
 			isHideBtns: state => state.forms.isHideBtns,
-			formValidation: state => state.forms.formValidation,
-			isActiveInp: state => state.forms.isActiveInp,
+			formValidationName: state => state.forms.formValidationName,
+			formValidationSurn: state => state.forms.formValidationSurn,
+			isActiveName: state => state.forms.isActiveName,
+			isActiveSurn: state => state.forms.isActiveSurn,
+			isActiveDate: state => state.forms.isActiveDate,
+			isActiveEmail: state => state.forms.isActiveEmail,
 			formValidationDate: state => state.forms.formValidationDate,
 			warnBirthday: state => state.forms.warnBirthday,
 			warnBirthdayMore: state => state.forms.warnBirthdayMore,
+			formValidationEmail: state => state.forms.formValidationEmail,
+			formData: state => state.forms.formData,
 		}),
 		...mapGetters({
 			changeFormTel: 'forms/changeFormTel',
 			matchNumbers: 'forms/matchNumbers',
-			validForm: 'forms/validForm',
 		})
 	}
 }

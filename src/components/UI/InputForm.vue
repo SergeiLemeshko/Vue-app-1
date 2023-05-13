@@ -5,6 +5,7 @@
         @input="updateInput"
         @inputName="updateInputName"
         @inputDate="updateInputDate"
+        @inputEmail="updateInputEmail"
         type="tel" 
         placeholder="Введите номер телефона"
     />
@@ -23,7 +24,13 @@ export default {
         updateInputName(event) {
             this.$emit('update:modelValue', event.target.value)
         },
+        updateInputSurn(event) {
+            this.$emit('update:modelValue', event.target.value)
+        },
         updateInputDate(event) {
+            this.$emit('update:modelValue', event.target.value)
+        },
+        updateInputEmail(event) {
             this.$emit('update:modelValue', event.target.value)
         }
     }
