@@ -1,10 +1,12 @@
 <template>
 	<!--форма 1 -->
 	<form class="form-tel" action="" method="GET" v-show="!isHideForm1">
+		<p class="form-tel__phone-warn" v-show="warnPhone">Введите корректный номер телефона</p>
 		<div v-if="!isHidePartForm1">
 			<input-form
-				:model-value="searchQuery"
+				v:model-value="searchQuery"
 				@update:model-value="setSearchQuery"
+				:class="{ 'active__inp': isActivePhone }" 
 				type="tel" 
 				placeholder="Введите номер телефона"
 			/>
@@ -70,14 +72,17 @@
 				placeholder="Введите e-mail"
 			/>
 		<p class="form-profile__accord">Я согласен с условиями программы лояльности и обработки данных.</p>
-			<input type="checkbox" id="checkbox" v-model="checked" />
-			<label for="checkbox">{{ checked }}</label>
-			<button class="form-profile__ok" @click.prevent="validForm"><span>ОК</span></button>
-		<div class="form-profile__btns" v-show="isHideBtns">   
+			<input 
+				type="checkbox" 
+				id="checkbox" 
+			/>
+			<label for="checkbox"></label>
+			<button class="form-profile__ok" @click.prevent="validAndSendForm"><span>ОК</span></button>
+	</form>
+	<div class="form-profile__btns" v-show="isHideBtns">   
 			<button class="form-profile__apple"><span>Добавить в Apple Wallet</span></button>
 			<button class="form-profile__google"><span>Добавить в Google Pay</span></button>
 		</div>
-	</form>
 </template>
 
 <script>
@@ -94,6 +99,7 @@ export default {
 	},
 	data() {
 		return {
+			checked: false
 		}
 	},
 	methods: {
@@ -116,12 +122,13 @@ export default {
 			setActiveEmail: 'forms/setActiveEmail',
 			setFormValidationDate: 'forms/setFormValidationDate',
 			setWarnBirthday: 'forms/setWarnBirthday',
+			setWarnPhone: 'forms/setWarnPhone',
 			setWarnBirthdayMore: 'forms/setWarnBirthdayMore',
 			setFormValidationEmail: 'forms/setFormValidationEmail',
 			setFormArray: 'forms/setFormArray',
 		}),
 		...mapActions({
-			validForm: 'forms/validForm',			
+			validAndSendForm: 'forms/validAndSendForm',			
 		}),
 	},
 	computed: {
@@ -138,12 +145,14 @@ export default {
 			isHideBtns: state => state.forms.isHideBtns,
 			formValidationName: state => state.forms.formValidationName,
 			formValidationSurn: state => state.forms.formValidationSurn,
+			isActivePhone: state => state.forms.isActivePhone,
 			isActiveName: state => state.forms.isActiveName,
 			isActiveSurn: state => state.forms.isActiveSurn,
 			isActiveDate: state => state.forms.isActiveDate,
 			isActiveEmail: state => state.forms.isActiveEmail,
 			formValidationDate: state => state.forms.formValidationDate,
 			warnBirthday: state => state.forms.warnBirthday,
+			warnPhone: state => state.forms.warnPhone,
 			warnBirthdayMore: state => state.forms.warnBirthdayMore,
 			formValidationEmail: state => state.forms.formValidationEmail,
 			formData: state => state.forms.formData,
@@ -158,6 +167,9 @@ export default {
 
 <style scoped lang="scss">
 /*первая форма*/
+.form-tel__phone-warn {
+
+}
 .form-tel {
 	background-color: rgb(224, 228, 172);
 	width: 300px;

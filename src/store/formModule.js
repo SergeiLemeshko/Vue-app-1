@@ -7,12 +7,14 @@ export const formModule = {
         isHidePass: false, // скрытие/показ инпута для ввода пароля из смс
         isHideSMS: false, // скрытие/показ пароля из смс
         isHideBtns: false, // скрытие/показ кнопок 2 формы
+        isActivePhone: false, // скрытие/показ подсветки на телефон
         isActiveName: false, // скрытие/показ подсветки на имя
         isActiveSurn: false, // скрытие/показ подсветки на фамилию
         isActiveDate: false, // скрытие/показ подсветки на дату
         isActiveEmail: false, // скрытие/показ подсветки на email
         warnBirthday: false, // предупреждение нет 18 лет
         warnBirthdayMore: false, // предупреждение неверного года ДР
+        warnPhone: false, // предупреждение корректности номера телефона
         randomNum: '', // рандомный код в смс
         inpValuePass: '',
         searchQuery: '',
@@ -24,9 +26,22 @@ export const formModule = {
     }), 
     getters: {
         changeFormTel(state) {
-            state.randomNum = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-            state.isHidePartForm1 = true;
-            state.isHideTel = true;
+            // Проверка email
+            let phone = state.searchQuery;
+            let regPhone = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/; //регулярочка для телефона
+
+            if(regPhone.test(phone)) {
+                state.randomNum = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+                state.isHidePartForm1 = true;
+                state.isHideTel = true;
+                state.formDate.push(state.searchQuery);
+                console.log(state.formDate);
+                state.warnPhone = false;
+            } else {
+                state.warnPhone = true;
+                state.isActivePhone = true;
+                state.searchQuery = '';
+            }          
         setTimeout(() => {
             if(state.isHideTel) {
                 state.isHideTel = false;
@@ -56,6 +71,9 @@ export const formModule = {
         setHidePartForm1(state, bool) {
             state.isHidePartForm1 = bool
         },
+        setWarnPhone(state, bool) {
+            state.warnPhone = bool
+        },
         setHideTel(state, bool) {
             state.isHideTel = bool
         },
@@ -82,6 +100,9 @@ export const formModule = {
         },
         setFormValidationSurn(state, formValidationSurn) {
             state.formValidationSurn = formValidationSurn
+        },
+        setActivePhone(state, bool) {
+            state.isActivePhone = bool
         },
         setActiveName(state, bool) {
             state.isActiveName = bool
@@ -112,37 +133,60 @@ export const formModule = {
         },
     },
     actions: {
-        validForm( {state, commit} ) {
+        validAndSendForm( {state, commit} ) {
             let date = new Date();
             let inpDate = []; // Введенная ДР
             inpDate = state.formValidationDate.split('-'); // Год введенной ДР
-            let email = state.formValidationEmail;
+            let email = state.formValidationEmail; // Введенный email
             let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; //регулярочка для emaila
-
+            
             // Проверка имени
-            state.formValidationName <= 0 ? commit('setActiveName', true) : state.formDate.push(state.formValidationName);
-
+            if(state.formValidationName <= 0) {
+                commit('setActiveName', true);                 
+            } else {
+                commit('setActiveName', false);
+            }
             // Проверка фамилии
-            state.formValidationSurn <= 0 ? commit('setActiveSurn', true) : state.formDate.push(state.formValidationSurn);
-
+            if(state.formValidationSurn <= 0) {
+                commit('setActiveSurn', true);                
+            } else {
+                commit('setActiveSurn', false);
+            }
             // Проверка даты
             if(Number(inpDate[0]) >= date.getFullYear() - 18) {
                 commit('setActiveDate', true);
                 commit('setWarnBirthdayMore', true);  
-                commit('setWarnBirthday', false);  
+                commit('setWarnBirthday', false); 
+                console.log('3');                   
             } else if(Number(inpDate[0]) === 0) {
                 commit('setActiveDate', true);
                 commit('setWarnBirthdayMore', false);  
-                commit('setWarnBirthday', true);
+                commit('setWarnBirthday', true);                  
             } else {
-                commit('setActiveDate', false);
-                state.formDate.push(state.formValidationDate);
+                commit('setActiveDate', false);                 
             }
-
             // Проверка email
-            reg.test(email) ? state.formDate.push(state.formValidationEmail) : commit('setActiveEmail', true);  
-            console.log(state.formDate);                     
-        }
+            if(!reg.test(email)) {
+                commit('setActiveEmail', true)                  
+            }  
+            else {
+                commit('setActiveEmail', false);                 
+            }
+            // Если все поля заполнены, то пушим
+            if(state.isActiveName === false && state.isActiveSurn === false && state.isActiveDate === false && state.isActiveEmail === false) { 
+                state.formDate.push(state.formValidationName);
+                state.formDate.push(state.formValidationSurn);                 
+                state.formDate.push(state.formValidationDate);
+                state.formDate.push(state.formValidationEmail);
+                setTimeout(() => { //добавить крутилку
+                    commit('setHideForm2', false);                 
+                    commit('setHideBtns', true);
+                }, 1000)
+            } else {
+                state.formDate.splice(0, state.formDate.length);
+            }
+            // console.log(state.formDate); 
+        },
     },
         modules: {
     },
