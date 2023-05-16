@@ -4,7 +4,7 @@
 		<p class="form-tel__phone-warn" v-show="warnPhone">Введите корректный номер телефона</p>
 		<div v-if="!isHidePartForm1">
 			<input-form
-				v:model-value="searchQuery"
+				:model-value="searchQuery"
 				@update:model-value="setSearchQuery"
 				:class="{ 'active__inp': isActivePhone }" 
 				type="tel" 
@@ -14,7 +14,7 @@
 		</div>
 		<p class="form-tel__confirm" v-if="isHideTel">“Смс с кодом подтверждения отправлено”</p>
 			<input-form  
-				v:model-value="searchQuery"
+				:model-value="searchQuery"
 				@update:model-value="setSearchQuery"  
 				v-if="isHidePass" 
 				@match="matchNumbers"
@@ -27,14 +27,14 @@
 	<form class="form-profile" isHide="false" action="" method="GET" v-show="isHideForm2">
 		<p class="form-profile__request">Пожалуйста, заполните анкету:</p>
 			<input-form 
-				v:model-value="formValidationName"
+				:model-value="formValidationName"
 				@update:model-value="setFormValidationName"
 				:class="{ 'active__inp': isActiveName }"
 				type="text" 
 				placeholder="Введите имя" 
 			/>
 			<input-form
-				v:model-value="formValidationSurn"
+				:model-value="formValidationSurn"
 				@update:model-value="setFormValidationSurn"
 				:class="{ 'active__inp': isActiveSurn }"
 				type="text" 
@@ -60,23 +60,26 @@
 		<p class="form-profile__birthday-warn1" v-show="warnBirthdayMore">Вам ещё не исполнилось 18 лет</p>
 			<input-form 
 				type="date" 
-				v:model-value="formValidationDate"
+				:model-value="formValidationDate"
 				@update:model-value="setFormValidationDate"
 				:class="{ 'active__inp': isActiveDate }"
 			/>
 			<input-form
-				v:model-value="formValidationEmail"
+				:model-value="formValidationEmail"
 				@update:model-value="setFormValidationEmail"
 				:class="{ 'active__inp': isActiveEmail }"
 				type="email" 
 				placeholder="Введите e-mail"
 			/>
 		<p class="form-profile__accord">Я согласен с условиями программы лояльности и обработки данных.</p>
-			<input 
+		<p class="form-profile__checkbox-warn" v-show="warnCheckbox">Поставьте галочку</p>
+			<checkbox-form
+				:model-value="checked"
+				@change:model-checked="setCheckbox"
+				@check="trackingChecked"
 				type="checkbox" 
 				id="checkbox" 
 			/>
-			<label for="checkbox"></label>
 			<button class="form-profile__ok" @click.prevent="validAndSendForm"><span>ОК</span></button>
 	</form>
 	<div class="form-profile__btns" v-show="isHideBtns">   
@@ -89,17 +92,19 @@
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 import InputForm from '@/components/UI/InputForm.vue';
 import ButtonForm from '@/components/UI/ButtonForm.vue';
+import CheckboxForm from '@/components/UI/CheckboxForm.vue';
+
 export default {
 	name: "FormCompany",
 	components: {
 		InputForm,
 		ButtonForm,
+		CheckboxForm,
 	},
 	props: {
 	},
 	data() {
 		return {
-			checked: false
 		}
 	},
 	methods: {
@@ -109,6 +114,7 @@ export default {
 			setHidePartForm1: 'forms/setHidePartForm1',
 			setHideTel: 'forms/setHideTel',
 			setHidePass: 'forms/setHidePass',
+			setCheckbox: 'forms/setChecked',
 			setHideSms: 'forms/setHideSms',
 			setRandomNum: 'forms/setRandomNum',
 			setInpValuePass: 'forms/setInpValuePass',
@@ -124,6 +130,7 @@ export default {
 			setWarnBirthday: 'forms/setWarnBirthday',
 			setWarnPhone: 'forms/setWarnPhone',
 			setWarnBirthdayMore: 'forms/setWarnBirthdayMore',
+			setWarnCheckbox: 'forms/setWarnCheckbox',
 			setFormValidationEmail: 'forms/setFormValidationEmail',
 			setFormArray: 'forms/setFormArray',
 		}),
@@ -139,6 +146,7 @@ export default {
 			isHideTel: state => state.forms.isHideTel,
 			isHidePass: state => state.forms.isHidePass,
 			isHideSMS: state => state.forms.isHideSMS,
+			checked: state => state.forms.checked,
 			randomNum: state => state.forms.randomNum,
 			inpValuePass: state => state.forms.inpValuePass,
 			searchQuery: state => state.forms.searchQuery,
@@ -154,13 +162,15 @@ export default {
 			warnBirthday: state => state.forms.warnBirthday,
 			warnPhone: state => state.forms.warnPhone,
 			warnBirthdayMore: state => state.forms.warnBirthdayMore,
+			warnCheckbox: state => state.forms.warnCheckbox,
 			formValidationEmail: state => state.forms.formValidationEmail,
 			formData: state => state.forms.formData,
 		}),
 		...mapGetters({
 			changeFormTel: 'forms/changeFormTel',
 			matchNumbers: 'forms/matchNumbers',
-		})
+			trackingChecked: 'forms/trackingChecked',
+		}),
 	}
 }
 </script>
@@ -205,6 +215,7 @@ export default {
 	display: block;
 }
 .form-profile__accord {}
+.form-profile__checkbox-warn{}
 .form-profile__ok {}
 .form-profile__apple {}
 .form-profile__google {}

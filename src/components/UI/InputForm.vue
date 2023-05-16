@@ -6,8 +6,6 @@
         @inputName="updateInputName"
         @inputDate="updateInputDate"
         @inputEmail="updateInputEmail"
-        type="tel" 
-        placeholder="Введите номер телефона"
     />
 </template>
 

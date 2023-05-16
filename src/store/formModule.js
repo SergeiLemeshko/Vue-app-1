@@ -14,15 +14,17 @@ export const formModule = {
         isActiveEmail: false, // скрытие/показ подсветки на email
         warnBirthday: false, // предупреждение нет 18 лет
         warnBirthdayMore: false, // предупреждение неверного года ДР
+        warnCheckbox: false, // предупреждение об отсутствии отметки чекбокса
         warnPhone: false, // предупреждение корректности номера телефона
         randomNum: '', // рандомный код в смс
+        checked: false,
         inpValuePass: '',
         searchQuery: '',
         formValidationName: '',
         formValidationSurn: '',
         formValidationDate: '',
         formValidationEmail: '',
-        formDate: [], // результат из формы
+        formDate:[], // результат из формы
     }), 
     getters: {
         changeFormTel(state) {
@@ -35,7 +37,7 @@ export const formModule = {
                 state.isHidePartForm1 = true;
                 state.isHideTel = true;
                 state.formDate.push(state.searchQuery);
-                console.log(state.formDate);
+                // console.log(state.formDate);
                 state.warnPhone = false;
             } else {
                 state.warnPhone = true;
@@ -44,6 +46,7 @@ export const formModule = {
             }          
         setTimeout(() => {
             if(state.isHideTel) {
+                state.searchQuery = '';
                 state.isHideTel = false;
                 state.isHidePass = true; 
                 state.isHideSMS = true;
@@ -60,6 +63,13 @@ export const formModule = {
                 }, 1000)
             }
         },
+        trackingChecked(state) {
+            if(state.checked === false) {
+                state.checked === true;
+            } else {
+                state.checked === false;
+            }
+        }
     },
     mutations: {
         setHideForm1(state, bool) {
@@ -82,6 +92,9 @@ export const formModule = {
         },
         setHideSms(state, bool) {
             state.isHideSMS = bool
+        },
+        setChecked(state, bool) {
+            state.checked = bool
         },
         setRandomNum(state, randomNum) {
             state.randomNum = randomNum
@@ -125,6 +138,9 @@ export const formModule = {
         setWarnBirthdayMore(state, bool) {
             state.warnBirthdayMore = bool
         },
+        setWarnCheckbox(state, bool) {
+            state.warnCheckbox = bool
+        },
         setFormValidationEmail(state, formValidationEmail) {
             state.formValidationEmail = formValidationEmail
         },
@@ -134,58 +150,67 @@ export const formModule = {
     },
     actions: {
         validAndSendForm( {state, commit} ) {
-            let date = new Date();
-            let inpDate = []; // Введенная ДР
-            inpDate = state.formValidationDate.split('-'); // Год введенной ДР
-            let email = state.formValidationEmail; // Введенный email
-            let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; //регулярочка для emaila
-            
-            // Проверка имени
-            if(state.formValidationName <= 0) {
-                commit('setActiveName', true);                 
-            } else {
-                commit('setActiveName', false);
-            }
-            // Проверка фамилии
-            if(state.formValidationSurn <= 0) {
-                commit('setActiveSurn', true);                
-            } else {
-                commit('setActiveSurn', false);
-            }
-            // Проверка даты
-            if(Number(inpDate[0]) >= date.getFullYear() - 18) {
-                commit('setActiveDate', true);
-                commit('setWarnBirthdayMore', true);  
-                commit('setWarnBirthday', false); 
-                console.log('3');                   
-            } else if(Number(inpDate[0]) === 0) {
-                commit('setActiveDate', true);
-                commit('setWarnBirthdayMore', false);  
-                commit('setWarnBirthday', true);                  
-            } else {
-                commit('setActiveDate', false);                 
-            }
-            // Проверка email
-            if(!reg.test(email)) {
-                commit('setActiveEmail', true)                  
-            }  
-            else {
-                commit('setActiveEmail', false);                 
-            }
-            // Если все поля заполнены, то пушим
-            if(state.isActiveName === false && state.isActiveSurn === false && state.isActiveDate === false && state.isActiveEmail === false) { 
-                state.formDate.push(state.formValidationName);
-                state.formDate.push(state.formValidationSurn);                 
-                state.formDate.push(state.formValidationDate);
-                state.formDate.push(state.formValidationEmail);
-                setTimeout(() => { //добавить крутилку
+            try {
+                let date = new Date();
+                let inpDate = []; // Введенная ДР
+                inpDate = state.formValidationDate.split('-'); // Год введенной ДР
+                let email = state.formValidationEmail; // Введенный email
+                let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; //регулярочка для emaila
+                
+                // Проверка имени
+                if(state.formValidationName <= 0) {
+                    commit('setActiveName', true);                 
+                } else {
+                    commit('setActiveName', false);
+                }
+                // Проверка фамилии
+                if(state.formValidationSurn <= 0) {
+                    commit('setActiveSurn', true);                
+                } else {
+                    commit('setActiveSurn', false);
+                }
+                // Проверка даты
+                if(Number(inpDate[0]) >= date.getFullYear() - 18) {
+                    commit('setActiveDate', true);
+                    commit('setWarnBirthdayMore', true);  
+                    commit('setWarnBirthday', false);                   
+                } else if(Number(inpDate[0]) === 0) {
+                    commit('setActiveDate', true);
+                    commit('setWarnBirthdayMore', false);  
+                    commit('setWarnBirthday', true);                  
+                } else {
+                    commit('setActiveDate', false);                 
+                }
+                // Проверка email
+                if(!reg.test(email)) {
+                    commit('setActiveEmail', true)                  
+                }  
+                else {
+                    commit('setActiveEmail', false);                 
+                }
+                // Проверка checkbox
+                if(state.checked === true) {
+                    commit('setWarnCheckbox', false); 
+                } else {
+                    commit('setWarnCheckbox', true);
+                }
+                // Если все поля заполнены, то пушим
+                if(state.isActiveName === false && state.isActiveSurn === false && state.isActiveDate === false && state.isActiveEmail === false && state.warnCheckbox === false) { 
+                    state.formDate.push(state.formValidationName);
+                    state.formDate.push(state.formValidationSurn);                 
+                    state.formDate.push(state.formValidationDate);
+                    state.formDate.push(state.formValidationEmail);
                     commit('setHideForm2', false);                 
-                    commit('setHideBtns', true);
-                }, 1000)
-            } else {
-                state.formDate.splice(0, state.formDate.length);
+                    setTimeout(() => { //добавить крутилку
+                        commit('setHideBtns', true);
+                    }, 1000)
+                } else {
+                    state.formDate.splice(0, state.formDate.length);
+                }
+                console.log(state.formDate); 
+            } catch (error) {
+                console.log(error); 
             }
-            // console.log(state.formDate); 
         },
     },
         modules: {
