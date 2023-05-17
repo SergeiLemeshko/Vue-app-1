@@ -1,5 +1,7 @@
 <template>
-	<h1>Сотрудники</h1>
+	<section class="container">
+		<h1>Сотрудники</h1>
+	</section>
 </template>
 
 <script>

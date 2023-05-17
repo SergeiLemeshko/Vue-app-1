@@ -1,91 +1,93 @@
 <template>
-	<!--форма 1 -->
-	<form class="form-tel" action="" method="GET" v-show="!isHideForm1">
-		<p class="form-tel__phone-warn" v-show="warnPhone">Введите корректный номер телефона</p>
-		<div v-if="!isHidePartForm1">
-			<input-form
-				:model-value="searchQuery"
-				@update:model-value="setSearchQuery"
-				:class="{ 'active__inp': isActivePhone }" 
-				type="tel" 
-				placeholder="Введите номер телефона"
-			/>
-			<button class="form-tel__btn" @click="changeFormTel" type="submit"><span>Получить код</span></button>
-		</div>
-		<p class="form-tel__confirm" v-if="isHideTel">“Смс с кодом подтверждения отправлено”</p>
-			<input-form  
-				:model-value="searchQuery"
-				@update:model-value="setSearchQuery"  
-				v-if="isHidePass" 
-				@match="matchNumbers"
-				type="password" 
-				placeholder="Введите код из смс"
-			/>
-		<p class="form-tel__sms" v-if="isHideSMS">А вот и ваш пароль из SMS:{{ this.randomNum }}</p>		
-	</form>
-	<!--форма 2 -->
-	<form class="form-profile" isHide="false" action="" method="GET" v-show="isHideForm2">
-		<p class="form-profile__request">Пожалуйста, заполните анкету:</p>
-			<input-form 
-				:model-value="formValidationName"
-				@update:model-value="setFormValidationName"
-				:class="{ 'active__inp': isActiveName }"
-				type="text" 
-				placeholder="Введите имя" 
-			/>
-			<input-form
-				:model-value="formValidationSurn"
-				@update:model-value="setFormValidationSurn"
-				:class="{ 'active__inp': isActiveSurn }"
-				type="text" 
-				placeholder="Введите фамилию"
-			/> 
-		<p class="form-profile__gender">Выберите ваш пол</p>
-			<input 
-				class="form-profile__masculine" 
-				id="masculine" 
-				type="radio" 
-				value="Муж."
-				v-model="picked">
-			<label for="masculine">Муж.</label>
-			<input 
-				class="form-profile__female" 
-				id="female" 
-				type="radio" 
-				value="Жен."
-				v-model="picked">
-			<label for="female">Жен.</label>
-		<p class="form-profile__birthday">Дата рождения</p>
-		<p class="form-profile__birthday-warn" v-show="warnBirthday">Введите дату рождения</p>
-		<p class="form-profile__birthday-warn1" v-show="warnBirthdayMore">Вам ещё не исполнилось 18 лет</p>
-			<input-form 
-				type="date" 
-				:model-value="formValidationDate"
-				@update:model-value="setFormValidationDate"
-				:class="{ 'active__inp': isActiveDate }"
-			/>
-			<input-form
-				:model-value="formValidationEmail"
-				@update:model-value="setFormValidationEmail"
-				:class="{ 'active__inp': isActiveEmail }"
-				type="email" 
-				placeholder="Введите e-mail"
-			/>
-		<p class="form-profile__accord">Я согласен с условиями программы лояльности и обработки данных.</p>
-		<p class="form-profile__checkbox-warn" v-show="warnCheckbox">Поставьте галочку</p>
-			<checkbox-form
-				:model-value="checked"
-				@change:model-checked="setCheckbox"
-				@check="trackingChecked"
-				type="checkbox" 
-				id="checkbox" 
-			/>
-			<button class="form-profile__ok" @click.prevent="validAndSendForm"><span>ОК</span></button>
-	</form>
-	<div class="form-profile__btns" v-show="isHideBtns">   
+	<section class="container">
+		<!--форма 1 -->
+		<form class="form-tel" action="" method="GET" v-show="!isHideForm1">
+			<p class="form-tel__phone-warn" v-show="warnPhone">Введите корректный номер телефона</p>
+			<div v-if="!isHidePartForm1">
+				<input-form
+					:model-value="searchQuery"
+					@update:model-value="setSearchQuery"
+					:class="{ 'active__inp': isActivePhone }" 
+					type="tel" 
+					placeholder="Введите номер телефона"
+				/>
+				<button class="form-tel__btn" @click="changeFormTel" type="submit"><span>Получить код</span></button>
+			</div>
+			<p class="form-tel__confirm" v-if="isHideTel">“Смс с кодом подтверждения отправлено”</p>
+				<input-form  
+					:model-value="searchQuery"
+					@update:model-value="setSearchQuery"  
+					v-if="isHidePass" 
+					@match="matchNumbers"
+					type="password" 
+					placeholder="Введите код из смс"
+				/>
+			<p class="form-tel__sms" v-if="isHideSMS">А вот и ваш пароль из SMS:{{ this.randomNum }}</p>		
+		</form>
+		<!--форма 2 -->
+		<form class="form-profile" isHide="false" action="" method="GET" v-show="isHideForm2">
+			<p class="form-profile__request">Пожалуйста, заполните анкету:</p>
+				<input-form 
+					:model-value="formValidationName"
+					@update:model-value="setFormValidationName"
+					:class="{ 'active__inp': isActiveName }"
+					type="text" 
+					placeholder="Введите имя" 
+				/>
+				<input-form
+					:model-value="formValidationSurn"
+					@update:model-value="setFormValidationSurn"
+					:class="{ 'active__inp': isActiveSurn }"
+					type="text" 
+					placeholder="Введите фамилию"
+				/> 
+			<p class="form-profile__gender">Выберите ваш пол</p>
+				<input 
+					class="form-profile__masculine" 
+					id="masculine" 
+					type="radio" 
+					value="Муж."
+					v-model="picked">
+				<label for="masculine">Муж.</label>
+				<input 
+					class="form-profile__female" 
+					id="female" 
+					type="radio" 
+					value="Жен."
+					v-model="picked">
+				<label for="female">Жен.</label>
+			<p class="form-profile__birthday">Дата рождения</p>
+			<p class="form-profile__birthday-warn" v-show="warnBirthday">Введите дату рождения</p>
+			<p class="form-profile__birthday-warn1" v-show="warnBirthdayMore">Вам ещё не исполнилось 18 лет</p>
+				<input-form 
+					type="date" 
+					:model-value="formValidationDate"
+					@update:model-value="setFormValidationDate"
+					:class="{ 'active__inp': isActiveDate }"
+				/>
+				<input-form
+					:model-value="formValidationEmail"
+					@update:model-value="setFormValidationEmail"
+					:class="{ 'active__inp': isActiveEmail }"
+					type="email" 
+					placeholder="Введите e-mail"
+				/>
+			<p class="form-profile__accord">Я согласен с условиями программы лояльности и обработки данных.</p>
+			<p class="form-profile__checkbox-warn" v-show="warnCheckbox">Поставьте галочку</p>
+				<checkbox-form
+					:model-value="checked"
+					@change:model-checked="setCheckbox"
+					@check="trackingChecked"
+					type="checkbox" 
+					id="checkbox" 
+				/>
+				<button class="form-profile__ok" @click.prevent="validAndSendForm"><span>ОК</span></button>
+		</form>
+		<div class="form-profile__btns" v-show="isHideBtns">   
 			<button class="form-profile__apple"><span>Добавить в Apple Wallet</span></button>
 			<button class="form-profile__google"><span>Добавить в Google Pay</span></button>
 		</div>
+	</section>
 </template>
 
 <script>

@@ -1,0 +1,77 @@
+<template>
+<button class="nav__btns btn">
+        <slot></slot>
+    </button>
+
+
+</template>
+
+<script>
+export default {
+	name: 'button-nav',
+}
+</script>
+
+<style lang="scss">
+    .nav__btns {
+        width: 150px;
+        height: 40px;
+        margin-right: 15px;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px 25px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        box-shadow: rgba(255,255,255,.5),
+        7px 7px 20px 0px rgba(0,0,0,.1),
+        4px 4px 5px 0px rgba(0,0,0,.1);
+        outline: none;
+
+        & span {
+			color: #FFFFFF;
+			letter-spacing: 0.01rem;
+		}
+    }
+    .nav__btns:last-child {
+        margin-right: 0px;
+    }
+    .btn {
+        background-color: #89d8d3;
+        background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+        border: none;
+        z-index: 1;
+    }
+    .btn:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        border-radius: 5px;
+        background-color: #4dccc6;
+        background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
+        box-shadow:
+        -7px -7px 20px 0px #fff9,
+        -4px -4px 5px 0px #fff9,
+        7px 7px 20px 0px #0002,
+        4px 4px 5px 0px #0001;
+        transition: all 0.3s ease;
+    }
+    .btn:hover {
+        color: #fff;
+    }
+    .btn:hover:after {
+        top: 0;
+        height: 100%;
+    }
+    .btn:active {
+        top: 2px;
+    }
+</style>
+

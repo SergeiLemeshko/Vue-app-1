@@ -1,7 +1,9 @@
 <template>
-	<div class="home">
-		<h1>Домашняя</h1>
-	</div>
+	<section class="container">
+		<div class="home">
+			<h1>Домашняя</h1>
+		</div>
+	</section>
 </template>
 
 <script>
@@ -16,6 +18,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 .home {}
 </style>
