@@ -16,19 +16,20 @@ export default {
     .nav__btns {
         width: 150px;
         height: 40px;
-        margin-right: 15px;
+        margin-right: 30px;
         color: #fff;
         border-radius: 5px;
         padding: 10px 25px;
-        font-family: 'Lato', sans-serif;
+        font-family: Sylfaen;
         font-weight: 500;
+        font-size: 0.9em;
         background: transparent;
         cursor: pointer;
         transition: all 0.3s ease;
         position: relative;
         box-shadow: rgba(255,255,255,.5),
-        7px 7px 20px 0px rgba(0,0,0,.1),
-        4px 4px 5px 0px rgba(0,0,0,.1);
+                    7px 7px 20px 0px rgba(0,0,0,.1),
+                    4px 4px 5px 0px rgba(0,0,0,.1);
         outline: none;
 
         & span {
@@ -40,8 +41,8 @@ export default {
         margin-right: 0px;
     }
     .btn {
-        background-color: #89d8d3;
-        background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+        background-color: #5ab4cf;
+        background-image: linear-gradient(315deg, #3b9db6 0%, #14d3ec 74%);
         border: none;
         z-index: 1;
     }
@@ -54,13 +55,12 @@ export default {
         left: 0;
         z-index: -1;
         border-radius: 5px;
-        background-color: #4dccc6;
-        background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
-        box-shadow:
-        -7px -7px 20px 0px #fff9,
-        -4px -4px 5px 0px #fff9,
-        7px 7px 20px 0px #0002,
-        4px 4px 5px 0px #0001;
+        background-color: #0ebfd6;
+        background-image: linear-gradient(315deg, #3db6e6 0%, #b9e7e4 74%);
+        box-shadow: -7px -7px 20px 0px #fff9,
+                    -4px -4px 5px 0px #fff9,
+                    7px 7px 20px 0px #0002,
+                    4px 4px 5px 0px #0001;
         transition: all 0.3s ease;
     }
     .btn:hover {

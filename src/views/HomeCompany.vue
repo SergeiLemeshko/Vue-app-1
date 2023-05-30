@@ -7,13 +7,11 @@
 </template>
 
 <script>
-import NavPage from '@/components/NavPage.vue'
 
 export default {
 	name: "HomeCompany",
-
 	components: {
-		NavPage
+
 	}
 }
 </script>

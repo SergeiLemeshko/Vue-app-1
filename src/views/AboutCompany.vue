@@ -1,17 +1,22 @@
 <template>
 	<section class="container">
 		<div class="about">
-			<h1>О компании</h1>
+			<h1>dfsdfsdf</h1>
 		</div>
 	</section>
 </template>
 
 <script>
 export default {
-	name: "AboutCompany"
-
+	name: "AboutCompany",
+	components: {
+	
+	}
 }
 </script>
 
 
-<style></style>
+<style lang="scss">
+
+
+</style>

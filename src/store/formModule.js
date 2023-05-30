@@ -145,7 +145,7 @@ export const formModule = {
             state.formValidationEmail = formValidationEmail
         },
         setFormData(state, array) {
-            state.formDate = array
+            state.formData = array
         },
     },
     actions: {

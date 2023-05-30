@@ -1,7 +1,7 @@
 <template>
 	<div class="wrapper">
+		<nav-page></nav-page>
 		<div class="container">
-			<nav-page></nav-page>
 			<router-link to="/"></router-link>
 			<router-link to="/form"></router-link>
 			<router-link to="/about"></router-link>
@@ -31,17 +31,17 @@ export default {
 
 .wrapper{
 	max-width: 100%;
-	height: 900px;
-	background-color: rgb(99, 129, 129);
+	height: 100%;
+	background: rgb(247,243,243);
+background: linear-gradient(90deg, rgba(247,243,243,1) 0%, rgba(244,240,247,1) 76%, rgba(241,237,240,1) 100%);
 }
 .container{
 	position: relative;
 	max-width: 1400px;
-	height: 900px;
+	min-height: 900px;
 	display: flex;
 	margin: 0 auto;
 	align-items: center;
-	background-color: rgb(58, 199, 199);
 }
 
 </style>

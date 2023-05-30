@@ -26,13 +26,18 @@ export default {
 .nav {
 	position: absolute;
 	top: 0px;
-	background: rgb(197, 241, 241);
-	height: 80px;
+	background-color: rgb(255, 255, 255);
+	height: 90px;
 	width: 100%;
 	display: flex;
+	padding: 0px 15px;
 	margin: 0 auto;
 	align-items: center;
 	justify-content: center;
+	border-bottom: 1px solid #d4e7e0;
+	-webkit-box-shadow: 0px 10px 30px -13px rgba(34, 60, 80, 0.41);
+	-moz-box-shadow: 0px 10px 30px -13px rgba(34, 60, 80, 0.41);
+	box-shadow: 0px 10px 30px -13px rgba(34, 60, 80, 0.41);
 }
 
 .nav-fixed{
