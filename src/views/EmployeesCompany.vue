@@ -1,6 +1,5 @@
 <template>
 	<section class="container">
-		<h1>EmployeesCompany</h1>
 		<employee-list></employee-list>
 	</section>
 </template>
@@ -22,6 +21,5 @@ export default {
 	},
 }
 </script>
-
 
 <style></style>

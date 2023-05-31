@@ -16,19 +16,19 @@ export const employeeModule = {
     },
     actions: {
         async getEmployeesList({ commit }) {
-            return await axios('https://jsonplaceholder.typicode.com/posts', {
+            return await axios(' https://reqres.in/api/users', {
                 method: "GET"
             })
             .then((employeesList) => {
-                commit("setEmployeesList", employeesList.data);
-                // console.log(employeesList.data)
+                commit("setEmployeesList", employeesList.data.data);
+                // console.log(employeesList.data.data)
                 return employeesList;
             })
             .catch((error) => {
-                // console.log(error)
+                console.log(error)
                 return error;
             })
         }
     },
-    namespaced: true //флаг. Все что заключено в этот модуль, имеет свое имя (employee)
+    namespaced: true //флаг. Все что заключено в этот модуль, имеет имя (employee)
 }

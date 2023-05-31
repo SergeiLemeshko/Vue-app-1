@@ -1,48 +1,29 @@
 <template>
-    <!-- <div v-for="employee in employeesList">
-        <div><strong>Название:</strong> {{ employee.title }}</div>
-            <div><strong>Описание:</strong> {{ employee.body }}</div>
-    
-    </div>     -->
-
-
     <div>
-        <h1>EmployeeList</h1>
-        <transition-group name="employee-list">
-            <employee-item
-                v-for="employee in employeesList"
-                    :key="employee.id"
-                    :employee="employee.title"
-                />
-        </transition-group>
+        <h1>Наши сотрудники</h1>
+        <div v-for="employee in employeesList" class="employee"
+            :key="employee.id"
+            :employee="employee.title">
+                <div>{{ employee.avatar }}</div>
+                <div>Имя:{{ employee.first_name }}</div>
+                <div>Фамилия:{{ employee.last_name }}</div>
+                <div>Email:{{ employee.email }}</div>
+        </div>
     </div>
 </template>
 
 <script>
-import EmployeeItem from '@/components/EmployeeItem.vue'
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
     name: 'EmployeeList',
-    components: {
-		EmployeeItem,
-	},
-    props: {
-    },
-    data() {
-        return {
-        }
-    },
     methods: {
-        ...mapMutations({
-            setEmployeesList: 'employee/setEmployeesList',
-        }),
         ...mapActions({
             getEmployeesList: 'employee/getEmployeesList',			
         }),
-    },
-    mounted() {
-        this.getEmployeesList();
+        ...mapMutations({
+            setEmployeesList: 'employee/setEmployeesList',
+        }),
     },
 	computed: {
 		...mapState({
@@ -52,24 +33,23 @@ export default {
 			employeesList: 'employee/employeesList',
 		}),
 	},
+    mounted() {
+        this.getEmployeesList();
+    },
 }
 </script>
-  
-  <style scoped>
-  .employee-list-item {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  .employee-list-enter-active,
-  .employee-list-leave-active {
-    transition: all 0.4s ease;
-  }
-  .employee-list-enter-from,
-  .employee-list-leave-to {
-    opacity: 0;
-    transform: translateX(130px);
-  }
-  .employee-list-move {
-    transition: transform 0.4s ease;
-  }
-  </style>
+
+<style scoped>
+.employee {
+    padding: 15px;
+    border: 2px solid rgb(17, 146, 146);
+    margin-top: 15px;
+    /* display: flex; */
+    align-items: center;
+    justify-content: space-between;
+}
+h1{
+    margin-top: 100px;
+    text-align: center;
+}
+</style>
