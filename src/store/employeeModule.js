@@ -16,12 +16,12 @@ export const employeeModule = {
     },
     actions: {
         async getEmployeesList({ commit }) {
-            return await axios(' https://reqres.in/api/users', {
+            return await axios('https://reqres.in/api/users/', {
                 method: "GET"
             })
             .then((employeesList) => {
                 commit("setEmployeesList", employeesList.data.data);
-                // console.log(employeesList.data.data)
+                console.log(employeesList.data.data)
                 return employeesList;
             })
             .catch((error) => {
