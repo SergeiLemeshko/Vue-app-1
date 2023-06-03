@@ -39,7 +39,6 @@ export default {
 	-moz-box-shadow: 0px 10px 30px -13px rgba(34, 60, 80, 0.41);
 	box-shadow: 0px 10px 30px -13px rgba(34, 60, 80, 0.41);
 }
-
 .nav-fixed{
 	position: fixed;
 	top: 0; 

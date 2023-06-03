@@ -17,6 +17,11 @@ import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
     name: 'EmployeeList',
+data() {
+    return {
+
+	}
+},
     methods: {
         ...mapActions({
             getEmployeesList: 'employee/getEmployeesList',			
@@ -45,7 +50,9 @@ $font-family: Sylfaen;
 .grid {
     display: grid;
     grid-template: 1fr 1fr/1fr 1fr 1fr;
-    margin-top: 50px;
+    position: absolute;
+    top: 200px;
+    left: 200px;
 }
 .employee {
     padding: 15px;

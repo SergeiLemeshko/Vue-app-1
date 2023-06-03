@@ -188,7 +188,7 @@ $font: 1.7em;
 $font-family: Sylfaen;
 
 .form {
-	top: -100px;
+	top: 200px;
 	// background-color: rgb(224, 228, 172);
 }
 /*первая форма*/
@@ -290,7 +290,6 @@ $font-family: Sylfaen;
 	flex-direction: column;
 	align-items: center;
 	margin: 0 auto;
-	margin-top: 200px;
 	padding: 20px 20px 20px 20px;
 	border-radius: 20px;
 	-webkit-box-shadow: 0px 0px 30px 4px rgba(34, 60, 80, 0.31);
@@ -367,7 +366,6 @@ $font-family: Sylfaen;
 	align-items: center;
 	justify-content: center;
 	margin: 0 auto;
-	margin-top: 100px;
 	padding: 20px 20px 20px 20px;
 	border-radius: 20px;
 	-webkit-box-shadow: 0px 0px 30px 4px rgba(34, 60, 80, 0.31);
