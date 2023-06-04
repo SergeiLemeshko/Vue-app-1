@@ -7,8 +7,8 @@
                 :SliderItem="item"
             />
         </div>
-        <button @click="prevSlide">Prev</button>
-        <button @click="nextSlide">Next</button>
+        <!-- <button @click="prevSlide">Prev</button>
+        <button @click="nextSlide">Next</button> -->
     </div>
 </template>
 
@@ -42,7 +42,6 @@ export default {
         prevSlide() {
             if(this.currentSlideIndex > 0) {
                 this.currentSlideIndex--
-                console.log(this.currentSlideIndex)
             }
         },
         nextSlide() {
@@ -60,18 +59,19 @@ export default {
             setInterval(function () {
                 vm.nextSlide()
             }, vm.interval)
-        }
+        } 
     }
 }
 </script>
 
 <style scoped lang="scss">
 .wrapper-slider {
-    max-width: 300px;
+    max-width: 700px;
     overflow: hidden;
     margin: 0 auto;
 }
 .slider-list {
+    margin-top: 200px;
     display: flex;
     transition: all ease .5s;
 }

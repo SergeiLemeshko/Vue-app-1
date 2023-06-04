@@ -1,22 +1,19 @@
 <template>
 	<section class="container">
-		<div class="about">
-			<h1>dfsdfsdf</h1>
-		</div>
+		<company-info></company-info>
 	</section>
 </template>
 
 <script>
+import CompanyInfo from '@/components/CompanyInfo.vue'
+
 export default {
 	name: "AboutCompany",
 	components: {
-	
+		CompanyInfo
 	}
 }
 </script>
 
-
-<style lang="scss">
-
-
+<style lang="scss"> 
 </style>

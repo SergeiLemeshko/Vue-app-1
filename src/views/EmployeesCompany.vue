@@ -11,14 +11,7 @@ export default {
 	name: "EmployeesCompany",
 	components: {
 		EmployeeList,
-	},
-	data() {
-		return {
-		
 	}
-},
-	methods: {
-	},
 }
 </script>
 
