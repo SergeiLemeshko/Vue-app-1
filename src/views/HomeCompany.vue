@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import SliderList from '@/components/UI/SliderList.vue';
+import SliderList from '@/components/SliderList.vue';
 
 export default {
 	name: "HomeCompany",

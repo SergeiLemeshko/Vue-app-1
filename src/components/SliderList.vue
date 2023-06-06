@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import SliderItem from '@/components/UI/SliderItem.vue';
+import SliderItem from '@/components/SliderItem.vue';
 
 export default {
 	name: "slider-list",

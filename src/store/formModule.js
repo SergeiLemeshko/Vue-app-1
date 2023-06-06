@@ -207,7 +207,7 @@ export const formModule = {
                 } else {
                     state.formDate.splice(0, state.formDate.length);
                 }
-                console.log(state.formDate); 
+                // console.log(state.formDate); 
             } catch (error) {
                 console.log(error); 
             }

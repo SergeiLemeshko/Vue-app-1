@@ -21,7 +21,7 @@ export const employeeModule = {
             })
             .then((employeesList) => {
                 commit("setEmployeesList", employeesList.data.data);
-                console.log(employeesList.data.data)
+                // console.log(employeesList.data.data)
                 return employeesList;
             })
             .catch((error) => {

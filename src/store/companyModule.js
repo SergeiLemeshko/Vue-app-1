@@ -21,7 +21,7 @@ export const companyModule = {
             })
             .then((aboutCompany) => {
                 commit("setAboutCompany", aboutCompany.data);
-                console.log(aboutCompany.data)
+                // console.log(aboutCompany.data)
                 return aboutCompany;
             })
             .catch((error) => {
