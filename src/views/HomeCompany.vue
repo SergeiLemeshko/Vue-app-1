@@ -6,6 +6,7 @@
 				:interval="3000"
 			/>
 		</div>
+		<router-link to="/about"><h2>Отзывы о нас</h2></router-link>
 	</section>
 </template>
 

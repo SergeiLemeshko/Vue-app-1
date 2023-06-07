@@ -2,8 +2,8 @@
     <div class="review">
             <div>Имя:{{ review.name }}</div>
             <div>Отзыв:{{ review.body }}</div>
-        <div class="review__btn">
-            <!-- <button @click="$router.push(`/posts/${post.id}`)">Открыть</button> -->
+        <div>
+            <button class="review__btn" @click="$router.push(`/reviews/${review.body}`)">Открыть</button>
         </div>
     </div>
 </template>
