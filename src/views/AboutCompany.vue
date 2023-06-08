@@ -5,18 +5,23 @@
 	<section>
 		<reviews-list :reviewsList="reviewsList"></reviews-list>
 	</section>
+    <section>
+        <video-block></video-block>
+    </section>
 </template>
 
 <script>
 import CompanyInfo from '@/components/CompanyInfo.vue'
-import ReviewsList from '@/components/ReviewsList.vue';
+import ReviewsList from '@/components/ReviewsList.vue'
+import VideoBlock from '@/components/VideoBlock.vue';;
 import axios from "axios";
 
 export default {
 	name: "AboutCompany",
 	components: {
 		CompanyInfo,
-		ReviewsList
+		ReviewsList,
+        VideoBlock
 	},
 	data() {
         return {
