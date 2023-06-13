@@ -1,22 +1,27 @@
 <template>
-	<section class="container">
+	<section>
 		<div>
 			<slider-list
 				:SliderData="sliderItems"
 				:interval="3000"
 			/>
 		</div>
-		<router-link to="/about"><h2>Отзывы о нас</h2></router-link>
 	</section>
+	<section>
+        <video-block></video-block>
+		<router-link to="/about"><a>Отзывы о нас</a></router-link>
+    </section>
 </template>
 
 <script>
 import SliderList from '@/components/SliderList.vue';
+import VideoBlock from '@/components/VideoBlock.vue'
 
 export default {
 	name: "HomeCompany",
 	components: {
-		SliderList
+		SliderList,
+		VideoBlock
 	},
 	data() {
 		return {
@@ -32,6 +37,16 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+$font-family: Sylfaen;
 
+a {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	margin: 20px 0px;
+	color: black;
+	text-transform: uppercase;
+	font-family: $font-family;
+}
 </style>
