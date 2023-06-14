@@ -1,15 +1,18 @@
 <template>
+    <section class="grid">
     <h1>Наши сотрудники:</h1>
-    <div class="grid">
-        <div v-for="employee in employeesList" class="employee"
-            :key="employee.id"
-            :employee="employee.title">
-                <img :src=employee.avatar>
-                <div><strong>Name:</strong> {{ employee.first_name }}</div>
-                <div><strong>Surname:</strong> {{ employee.last_name }}</div>
-                <div><strong>Email:</strong> {{ employee.email }} </div>
+
+        <div class="grid__container">
+            <div v-for="employee in employeesList" class="employee"
+                :key="employee.id"
+                :employee="employee.title">
+                    <img :src=employee.avatar>
+                    <div><strong>Name:</strong> {{ employee.first_name }}</div>
+                    <div><strong>Surname:</strong> {{ employee.last_name }}</div>
+                    <div><strong>Email:</strong> {{ employee.email }} </div>
+            </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -47,16 +50,20 @@ data() {
 <style scoped lang="scss">
 $font: 1.7em;
 $font-family: Sylfaen;
+
 .grid {
+    margin: 0 auto;
+    max-width: 900px;
+    padding-top: 300px;
+}
+.grid__container {
     display: grid;
     grid-template: 1fr 1fr/1fr 1fr 1fr;
-    position: absolute;
-    top: 200px;
-    left: 200px;
 }
 .employee {
     padding: 15px;
     margin: 20px;
+    width: 250px;
     align-items: center;
     text-align: center;
 	background-color: rgb(245, 243, 243);
@@ -76,10 +83,18 @@ $font-family: Sylfaen;
     }
 }
 h1 {
-    position: absolute;
-    top: 130px;
-    left: 35%;
     font-family: $font-family;
     font-size: 2em;
 }
+
+// @media (max-width: 992px) {
+//     .video__item {
+//         width: 500px;
+//     }
+// }
+// @media (max-width: 767px) {
+//     .video__item {
+//         width: 350px;
+//     }
+// }
 </style>

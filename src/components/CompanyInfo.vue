@@ -1,5 +1,5 @@
 <template>
-    <div class="company">
+    <div>
         <div class="company__img">
             <img src="@/assets/images/6.jpg" alt="About company">
         </div>

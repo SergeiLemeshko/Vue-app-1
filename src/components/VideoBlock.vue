@@ -75,7 +75,7 @@ $font-family: Sylfaen;
 .video__container {
     position: relative;
     margin: 0 auto;
-    width: 600px;
+    width: 700px;
 
         & span {
         position: absolute;
@@ -89,10 +89,10 @@ $font-family: Sylfaen;
 .video__title {
     font-family: $font-family;
     text-align: center;
-    margin: 20px 0px;
+    margin: 10px 0px;
 }
 .video__item {
-    width: 600px;
+    width: 700px;
     border-radius: 3px;
 }
 @media (max-width: 992px) {

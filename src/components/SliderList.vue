@@ -71,7 +71,7 @@ export default {
     margin: 0 auto;
 }
 .slider-list {
-    margin-top: 200px;
+    margin-top: 180px;
     display: flex;
     transition: all ease .5s;
 }

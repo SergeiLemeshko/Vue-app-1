@@ -1,5 +1,5 @@
 <template>
-	<section class="form container">
+	<section class="form">
 		<!--форма 1 -->
 		<form class="form-tel" action="" method="GET" v-show="!isHideForm1">
 			<h1>Введите номер телефона</h1>
@@ -188,8 +188,7 @@ $font: 1.7em;
 $font-family: Sylfaen;
 
 .form {
-	top: 200px;
-	// background-color: rgb(224, 228, 172);
+	padding-top: 280px;
 }
 /*первая форма*/
 .form-tel {

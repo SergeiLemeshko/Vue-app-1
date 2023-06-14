@@ -43,10 +43,9 @@ $font-family: Sylfaen;
 a {
 	display: block;
 	text-align: center;
-	text-decoration: none;
-	margin: 20px 0px;
+	margin: 10px 280px 50px 0px;
 	color: black;
-	text-transform: uppercase;
 	font-family: $font-family;
+	font-size: 1.2em;
 }
 </style>

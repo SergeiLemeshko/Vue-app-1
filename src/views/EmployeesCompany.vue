@@ -1,5 +1,5 @@
 <template>
-	<section class="container">
+	<section>
 		<employee-list></employee-list>
 	</section>
 </template>
@@ -15,4 +15,4 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss"></style>

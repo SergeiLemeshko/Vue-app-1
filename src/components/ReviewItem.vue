@@ -1,7 +1,7 @@
 <template>
     <div class="review">
-            <div>Имя:{{ review.name }}</div>
-            <div>Отзыв:{{ review.body }}</div>
+            <div class="review__name"><strong>Имя:</strong> {{ review.name }}</div>
+            <div class="review__body"><strong>Отзыв:</strong> {{ review.body }}</div>
         <div>
             <button class="review__btn" @click="$router.push(`/reviews/${review.body}`)">Открыть</button>
         </div>
@@ -24,17 +24,41 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$font: 1em;
+$font-family: Sylfaen;
 .review {
     padding: 10px;
-    border: 1px solid teal;
-    margin: 15px 15px 0px 15px;
-    max-width: 700px;
+    border: 1px solid rgb(172, 194, 194);
+    margin: 15px;
     display: flex;
-    align-items: flex-start;
+    align-items: start;
     flex-direction: column;
 }
 .review__btn {
-    display: flex;
+    font-family: $font-family;
+    border-radius: 7px;
+    width: 80px;
+    height: 30px;
+    color: rgb(0, 0, 0);
+    transition: .2s linear;
+    background: #b9c293;
+    margin-top: 15px;
+}
+
+.review__btn:hover {
+   box-shadow: #dcdfb6 0 0px 0px 40px inset;
+}
+.review__name {
+    font-family: $font-family;
+    max-width: 680px;
+
+}
+
+.review__body {
+    font-family: $font-family;
+    max-width: 680px;
+
+
 }
 </style>

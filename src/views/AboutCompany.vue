@@ -1,5 +1,5 @@
 <template>
-	<section class="container">
+	<section>
 		<company-info></company-info>
 	</section>
 	<section>

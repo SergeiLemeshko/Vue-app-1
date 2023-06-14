@@ -30,14 +30,14 @@ export default {
 }
 
 .wrapper{
-	max-width: 100%;
+	width: 100%;
 	height: 100%;
 	background: rgb(247,243,243);
 	background: linear-gradient(90deg, rgba(247,243,243,1) 0%, rgba(244,240,247,1) 76%, rgba(241,237,240,1) 100%);
 }
 .container{
 	position: relative;
-	max-width: 1400px;
+	max-width: 1300px;
 	min-height: 1400px;
 	margin: 0 auto;
 }
