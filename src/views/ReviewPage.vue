@@ -1,6 +1,6 @@
 <template>
     <div class="review__info">
-        <p>Отзыв:{{ $route.params.id }}</p>
+        <p><strong>Отзыв:</strong> {{ $route.params.id }}</p>
     </div>
 </template>
 
@@ -10,6 +10,14 @@
 
 <style scoped lang="scss">
 .review__info{
-    margin-top: 200px;
+    padding-top: 200px;
+}
+
+p {
+    margin: 0 auto;
+    max-width: 600px;
+    text-indent: 30px;
+    padding: 10px;
+    border: 1px solid rgb(172, 194, 194);
 }
 </style>

@@ -18,7 +18,7 @@ import SliderItem from '@/components/SliderItem.vue';
 export default {
 	name: "slider-list",
 	components: {
-        SliderItem
+        SliderItem 
 	},
 	props: {
         // массив картинок слайдера
@@ -70,9 +70,34 @@ export default {
     overflow: hidden;
     margin: 0 auto;
 }
+@media (max-width: 992px) {
+    .wrapper-slider {
+        width: 600px;
+    }
+}
+@media (max-width: 767px) {
+    .wrapper-slider {
+        width: 500px;
+    }
+}
+@media (max-width: 480px) {
+    .wrapper-slider {
+        width: 450px;
+    }
+}
 .slider-list {
     margin-top: 180px;
     display: flex;
     transition: all ease .5s;
+}
+@media (max-width: 992px) {
+    .slider-list {
+        margin-top: 140px;
+    }
+}
+@media (max-width: 767px) {
+    .slider-list {
+        margin-top: 120px;
+    }
 }
 </style>

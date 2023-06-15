@@ -15,9 +15,6 @@ export default {
 	name: 'NavPage',
 	components: {
 		ButtonNav,
-	},
-	props: {
-
 	}
 }
 </script>

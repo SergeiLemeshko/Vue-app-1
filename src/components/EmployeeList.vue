@@ -1,7 +1,6 @@
 <template>
     <section class="grid">
     <h1>Наши сотрудники:</h1>
-
         <div class="grid__container">
             <div v-for="employee in employeesList" class="employee"
                 :key="employee.id"
@@ -54,7 +53,7 @@ $font-family: Sylfaen;
 .grid {
     margin: 0 auto;
     max-width: 900px;
-    padding-top: 300px;
+    padding-top: 150px;
 }
 .grid__container {
     display: grid;
@@ -85,6 +84,7 @@ $font-family: Sylfaen;
 h1 {
     font-family: $font-family;
     font-size: 2em;
+    text-align: center;
 }
 
 // @media (max-width: 992px) {

@@ -45,20 +45,15 @@ $font-family: Sylfaen;
     background: #b9c293;
     margin-top: 15px;
 }
-
 .review__btn:hover {
    box-shadow: #dcdfb6 0 0px 0px 40px inset;
 }
 .review__name {
     font-family: $font-family;
     max-width: 680px;
-
 }
-
 .review__body {
     font-family: $font-family;
     max-width: 680px;
-
-
 }
 </style>

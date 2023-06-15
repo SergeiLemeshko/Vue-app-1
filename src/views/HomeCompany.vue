@@ -1,16 +1,18 @@
 <template>
-	<section>
-		<div>
-			<slider-list
-				:SliderData="sliderItems"
-				:interval="3000"
-			/>
-		</div>
-	</section>
-	<section>
-        <video-block></video-block>
-		<router-link to="/about"><a>Отзывы о нас</a></router-link>
-    </section>
+	<div class="home">
+		<section>
+			<div>
+				<slider-list
+					:SliderData="sliderItems"
+					:interval="3000"
+				/>
+			</div>
+		</section>
+		<section>
+			<video-block></video-block>
+			<router-link to="/about"><a>Отзывы о нас</a></router-link>
+		</section>
+	</div>
 </template>
 
 <script>
@@ -43,9 +45,48 @@ $font-family: Sylfaen;
 a {
 	display: block;
 	text-align: center;
-	margin: 10px 280px 50px 0px;
+	margin: 10px 280px 0px 0px;
 	color: black;
 	font-family: $font-family;
 	font-size: 1.2em;
+	padding-bottom: 20px;
+}
+@media (max-width: 992px) {
+    a {
+		font-size: 1em;
+		margin: 10px 250px 0px 0px;
+    }
+}
+@media (max-width: 767px) {
+    a {
+		font-size: 0.9em;
+		margin: 10px 210px 0px 0px;
+    }
+}
+@media (max-width: 480px) {
+    a {
+		margin: 10px 160px 0px 0px;
+    }
+}
+
+@media (max-width: 992px) {
+    .home {
+		height: 1300px;
+    }
+}
+@media (max-width: 767px) {
+    .home {
+		height: 1200px;
+    }
+}
+@media (max-width: 480px) {
+    .home {
+		height: 1150px;
+    }
+}
+@media (max-width: 390px) {
+    .home {
+		height: 1340px;
+    }
 }
 </style>

@@ -85,7 +85,21 @@ $font-family: Sylfaen;
         font-family: $font-family;
     }
 }
-
+@media (max-width: 992px) {
+    .video__container {
+        width: 600px;
+    }
+}
+@media (max-width: 767px) {
+    .video__container {
+        width: 500px;
+    }
+}
+@media (max-width: 480px) {
+    .video__container {
+        width: 400px;
+    }
+}
 .video__title {
     font-family: $font-family;
     text-align: center;
@@ -97,12 +111,17 @@ $font-family: Sylfaen;
 }
 @media (max-width: 992px) {
     .video__item {
-        width: 500px;
+        width: 600px;
     }
 }
 @media (max-width: 767px) {
     .video__item {
-        width: 350px;
+        width: 500px;
+    }
+}
+@media (max-width: 480px) {
+    .video__item {
+        width: 400px;
     }
 }
 </style>

@@ -28,18 +28,31 @@ export default {
 	padding: 0;
 	box-sizing: border-box;
 }
-
 .wrapper{
 	width: 100%;
 	height: 100%;
 	background: rgb(247,243,243);
 	background: linear-gradient(90deg, rgba(247,243,243,1) 0%, rgba(244,240,247,1) 76%, rgba(241,237,240,1) 100%);
 }
+@media (max-width: 992px) {
+    .wrapper {
+		width: 992px;
+    }
+}
+@media (max-width: 767px) {
+    .wrapper {
+		width: 767px;
+    }
+}
+@media (max-width: 480px) {
+    .wrapper {
+		min-width: 480px;
+    }
+}
 .container{
 	position: relative;
 	max-width: 1300px;
-	min-height: 1400px;
+	height: 100%;
 	margin: 0 auto;
 }
-
 </style>
