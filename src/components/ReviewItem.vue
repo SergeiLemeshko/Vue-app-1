@@ -29,11 +29,11 @@ $font: 1em;
 $font-family: Sylfaen;
 .review {
     padding: 10px;
-    border: 1px solid rgb(172, 194, 194);
-    margin: 15px;
-    display: flex;
-    align-items: start;
-    flex-direction: column;
+    border: 1px solid rgb(223, 235, 235);
+    margin: 20px;
+    -webkit-box-shadow: 0px 0px 5px 4px rgba(166, 174, 115, 0.2);
+    -moz-box-shadow: 0px 0px 5px 4px rgba(166, 174, 115, 0.2);
+    box-shadow: 0px 0px 5px 4px rgba(166, 174, 115, 0.2);
 }
 .review__btn {
     font-family: $font-family;
@@ -46,7 +46,7 @@ $font-family: Sylfaen;
     margin-top: 15px;
 }
 .review__btn:hover {
-   box-shadow: #dcdfb6 0 0px 0px 40px inset;
+    box-shadow: #dcdfb6 0 0px 0px 40px inset;
 }
 .review__name {
     font-family: $font-family;

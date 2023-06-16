@@ -49,6 +49,7 @@ export default {
 		min-width: 480px;
     }
 }
+
 .container{
 	position: relative;
 	max-width: 1300px;

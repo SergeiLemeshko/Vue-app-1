@@ -30,10 +30,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+$font-family: Sylfaen;
+
+h3 {
+    font-family: $font-family;
+    font-size: 1.5em;
+}
 .rewiews__block{
-    padding: 1350px 15px 15px 15px;
+    padding: 50px 15px 15px 15px;
     margin: 0 auto;
-    top: 1400px;
     max-width: 800px;
     text-align: justify;
     text-indent: 30px;

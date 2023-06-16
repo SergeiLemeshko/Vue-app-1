@@ -183,12 +183,13 @@ export default {
 }
 </script>
 
-<style scooped lang="scss">
+<style lang="scss">
 $font: 1.7em;
 $font-family: Sylfaen;
 
 .form {
 	padding-top: 280px;
+	min-height: 1100px;
 }
 /*первая форма*/
 .form-tel {
