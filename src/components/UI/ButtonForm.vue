@@ -11,11 +11,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    .form-profile__btn{
-        padding: 10px 15px;
-        background: none;
-        color: teal;
-        border: 1px solid teal;
-        cursor: pointer;
-    }
+.form-profile__btn{
+    padding: 10px 15px;
+    background: none;
+    color: teal;
+    border: 1px solid teal;
+    cursor: pointer;
+}
 </style>

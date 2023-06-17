@@ -15,8 +15,8 @@
     </div>
         <div class="company__wrapper-two">
             <div class="company__img-two">
-                    <img src="@/assets/images/7.jpg" alt="About company">
-                </div>
+                <img src="@/assets/images/7.jpg" alt="About company">
+            </div>
             <div class="company__container-two">
                 <div v-for="item in aboutCompany" class="company__item-two"
                     :key="item.id"
@@ -32,11 +32,6 @@ import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
     name: 'CompanyInfo',
-data() {
-    return {
-
-	}
-},
     methods: {
         ...mapActions({
             getInfoAboutCompany: 'company/getInfoAboutCompany',			

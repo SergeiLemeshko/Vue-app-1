@@ -39,7 +39,6 @@ export default {
         text-transform: uppercase;
     }
 }
-
 @media (max-width: 992px) {
     .nav__btns {
         width: 100px;

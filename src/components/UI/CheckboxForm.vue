@@ -20,7 +20,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    .form-profile__checkbox {
-
-    }
 </style>

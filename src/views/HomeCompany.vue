@@ -68,7 +68,6 @@ a {
 		margin: 10px 160px 0px 0px;
     }
 }
-
 @media (max-width: 992px) {
     .home {
 		height: 1300px;

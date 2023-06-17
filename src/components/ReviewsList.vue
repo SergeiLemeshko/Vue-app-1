@@ -14,11 +14,6 @@ import ReviewItem from "@/components/ReviewItem";
 
 export default {
     components: {ReviewItem},
-    data() {
-        return {
-
-        }
-    },
     props: {
         reviewsList: {
             type: Array,
@@ -26,7 +21,6 @@ export default {
         }
     },
 }
-
 </script>
 
 <style scoped lang="scss">

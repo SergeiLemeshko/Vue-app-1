@@ -35,24 +35,24 @@ export default {
 }
 </script>
 
-<style lang="scss">
-    .form-tel__input{
-        width: 280px;
-        height: calc(2.25rem + 2px);
-        padding: 0.375rem 0.75rem;
-        margin-bottom: 1rem;
-        font-family: Sylfaen;
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5;
-        color: #212529;
-        background-clip: padding-box;
-        border: 1px solid #bdbdbd;
-        border-radius: 0.25rem;
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    }
-    .form-tel__input::placeholder {
-        color: #212529;
-        opacity: 0.4;
-    }
+<style scoped lang="scss">
+.form-tel__input{
+    width: 280px;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 1rem;
+    font-family: Sylfaen;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.form-tel__input::placeholder {
+    color: #212529;
+    opacity: 0.4;
+}
 </style>

@@ -6,12 +6,9 @@
 </template>
 
 <script>
-
 export default {
 	name: "SliderItem",
-	components: {
 
-	},
 	props: {
         SliderItem: {
             type: Object,

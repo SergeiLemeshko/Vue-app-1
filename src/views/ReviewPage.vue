@@ -4,15 +4,13 @@
     </div>
 </template>
 
-<script>
-
-</script>
+<script></script>
 
 <style scoped lang="scss">
 .review__info{
     padding-top: 200px;
+    min-height: 1000px;
 }
-
 p {
     margin: 0 auto;
     max-width: 600px;

@@ -19,11 +19,7 @@ import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
     name: 'EmployeeList',
-data() {
-    return {
 
-	}
-},
     methods: {
         ...mapActions({
             getEmployeesList: 'employee/getEmployeesList',			
